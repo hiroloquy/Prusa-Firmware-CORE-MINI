@@ -500,7 +500,7 @@
 
 // Uncomment one of these options to enable CoreXY, CoreXZ, or CoreYZ kinematics
 // either in the usual order or reversed
-//#define COREXY
+#define COREXY
 //#define COREXZ
 //#define COREYZ
 //#define COREYX
@@ -830,10 +830,10 @@
  *    (0,0)
  */
 #define NOZZLE_TO_PROBE_OFFSET \
-    { -29, -3, 0 }
+    {-5, -14, 0 }
 
 // Certain types of probes need to stay away from edges
-#define MIN_PROBE_EDGE 5
+#define MIN_PROBE_EDGE 0
 
 // X and Y axis travel speed (mm/m) between probes
 #define XY_PROBE_SPEED 5000
@@ -920,9 +920,9 @@
 #define DISABLE_INACTIVE_EXTRUDER // Keep only the active extruder enabled
 
 // default values
-#define DEFAULT_INVERT_X_DIR false
-#define DEFAULT_INVERT_Y_DIR false
-#define DEFAULT_INVERT_Z_DIR true
+#define DEFAULT_INVERT_X_DIR true
+#define DEFAULT_INVERT_Y_DIR true
+#define DEFAULT_INVERT_Z_DIR false
 #define DEFAULT_INVERT_E0_DIR true
 
 #ifdef USE_PRUSA_EEPROM_AS_SOURCE_OF_DEFAULT_VALUES
@@ -975,15 +975,15 @@
 #define X_MIN_POS -2
 #define Y_MIN_POS -3
 #define Z_MIN_POS 0
-#define X_MAX_POS X_BED_SIZE
-#define Y_MAX_POS Y_BED_SIZE
+#define X_MAX_POS X_BED_SIZE+10
+#define Y_MAX_POS Y_BED_SIZE+5
 #ifdef USE_PRUSA_EEPROM_AS_SOURCE_OF_DEFAULT_VALUES
-    #define DEFAULT_Z_MAX_POS 185
+    #define DEFAULT_Z_MAX_POS 182
     #define Z_MIN_LEN_LIMIT 1
     #define Z_MAX_LEN_LIMIT 10000
     #define Z_MAX_POS (get_z_max_pos_mm())
 #else
-    #define Z_MAX_POS 185
+    #define Z_MAX_POS 182
 #endif
 
 /// How much space there is between the bed and the ceiling for Z = 0 on CoreXY printers
@@ -1170,7 +1170,7 @@
 
 // Manually set the home position. Leave these undefined for automatic settings.
 // For DELTA this is the top-center of the Cartesian print volume.
-#define MANUAL_X_HOME_POS 180.4
+//#define MANUAL_X_HOME_POS 180.4
 //#define MANUAL_Y_HOME_POS 0
 //#define MANUAL_Z_HOME_POS 0
 
@@ -1186,12 +1186,15 @@
 #define Z_SAFE_HOMING
 
 #if ENABLED(Z_SAFE_HOMING)
-    #define Z_SAFE_HOMING_X_POINT (147.4) // X point for Z homing when homing all axes (G28).
-    #define Z_SAFE_HOMING_Y_POINT (21.1) // Y point for Z homing when homing all axes (G28).
+    #define Z_SAFE_HOMING_X_POINT (90.0) // X point for Z homing when homing all axes (G28).
+    #define Z_SAFE_HOMING_Y_POINT (90.0) // Y point for Z homing when homing all axes (G28).
 #endif
 
+// Move away from the endstops after homing
+#define HOMING_BACKOFF_POST_MM { 2, 2, 0 }
+
 // Homing speeds (mm/m)
-#define HOMING_FEEDRATE_XY (3000)
+#define HOMING_FEEDRATE_XY (2500)
 #define HOMING_FEEDRATE_Z (6 * 60)
 #define HOMING_FEEDRATE_INVERTED_Z (30 * 60)
 
@@ -1329,12 +1332,12 @@
     #define Y_AXIS_LOAD_POS    mapi::ParkingPosition::unchanged
     #define Y_AXIS_UNLOAD_POS  mapi::ParkingPosition::unchanged
     // homing to this pos makes PTFE tube last longer
-    #define X_AXIS_LOAD_POS  ((X_MAX_POS) / 4.0f)
-    #define X_AXIS_UNLOAD_POS  ((X_MAX_POS) / 4.0f)
+    #define X_AXIS_LOAD_POS  90.0f
+    #define X_AXIS_UNLOAD_POS  90.0f
     // Specify a park position as { X, Y, Z }
 
-    #define X_NOZZLE_PARK_POINT (X_MAX_POS - 10.0f)
-    #define Y_NOZZLE_PARK_POINT (Y_MAX_POS - 10.0f)
+    #define X_NOZZLE_PARK_POINT 110.0f
+    #define Y_NOZZLE_PARK_POINT 110.0f
     #define Z_NOZZLE_PARK_POINT 20.0f
     // #define Z_NOZZLE_PARK_POINT_MIN 10.0f // Always raise the nozzle by this amount when parking on print end
     #define Z_NOZZLE_PARK_RISE 20.0f // Relative Z rise
@@ -1344,8 +1347,8 @@
 
     #define XYZ_NOZZLE_PARK_POINT_ON_PRINT_END XYZ_NOZZLE_PARK_POINT
 
-    #define X_NOZZLE_PARK_POINT_M600    (X_MIN_POS + 10.0f)
-    #define Y_NOZZLE_PARK_POINT_M600    (Y_MIN_POS + 10.0f)
+    #define X_NOZZLE_PARK_POINT_M600    15.0f
+    #define Y_NOZZLE_PARK_POINT_M600    15.0f
     #define Z_NOZZLE_PARK_POINT_M600    20.0f
     #define XYZ_NOZZLE_PARK_POINT_M600 \
         {X_NOZZLE_PARK_POINT_M600, Y_NOZZLE_PARK_POINT_M600, Z_NOZZLE_PARK_POINT_M600}

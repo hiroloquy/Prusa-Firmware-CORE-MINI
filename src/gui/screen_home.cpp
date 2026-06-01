@@ -98,7 +98,7 @@ constexpr size_t buttonTextHeight = 13; // font_regular_7x13
 constexpr size_t buttonTopOffset = 88;
 constexpr size_t buttonTextTopOffset = 155;
 
-constexpr Rect16 logoRect = Rect16(41, 31, 158, 40);
+constexpr Rect16 logoRect = Rect16(9, 31, 222, 40);// old=Rect16(41, 31, 158, 40);
 #endif
 
 #if HAS_LARGE_DISPLAY()
@@ -194,7 +194,7 @@ screen_home_data_t::screen_home_data_t()
     , header(this)
     , footer(this)
 #if HAS_MINI_DISPLAY()
-    , logo(this, logoRect, &img::prusa_mini_logo_153x40)
+    , logo(this, logoRect, &img::prusa_core_mini_logo_220x40) // old=&img::prusa_mini_logo_153x40
 #endif
     , w_buttons {
         { this, Rect16(), nullptr, [](window_t&) { Screens::Access()->Open(ScreenFactory::Screen<screen_filebrowser_data_t>); } },

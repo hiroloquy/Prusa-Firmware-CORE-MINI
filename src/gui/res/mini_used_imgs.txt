@@ -77,6 +77,7 @@ settings_58x58.png
 spool_58x58.png
 disconnect_48x48.png
 prusa_mini_logo_153x40.png
+prusa_core_mini_logo_220x40.png
 arrow_down_12x12.png
 arrow_down_orange_12x12.png
 arrow_up_12x12.png
