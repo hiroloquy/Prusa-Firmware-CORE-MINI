@@ -2,6 +2,9 @@
 
 This repository contains the modified firmware for **Prusa CORE MINI**, a CoreXY conversion project based on the **Original Prusa MINI+** by Prusa Research.
 
+**Project page, CAD files, BOM, and build information:**  
+https://www.printables.com/model/1800656-prusa-core-mini
+
 Prusa CORE MINI reuses several parts from the Original Prusa MINI+, including the Buddy board, LCD, motors, rods, heatbed, and other components, while redesigning the frame, XY motion system, Z axis, and printhead assembly.
 
 This firmware is based on **Prusa-Firmware-Buddy** and has been modified for the Prusa CORE MINI hardware configuration.
@@ -55,7 +58,7 @@ Many thanks to Prusa Research and the open-source 3D printing community for maki
 
 ### Cloning this repository
 
-Run `git clone https://github.com/hiroloquy/Prusa-Firmware-CORE-MINI.git`.
+Run `git clone https://github.com/hiroloquy/Prusa-CORE-MINI-Firmware.git`.
 
 ### Building
 
